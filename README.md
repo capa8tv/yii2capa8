@@ -4,17 +4,20 @@ Yii 2 Template Basic
 CLASE 1
 -------
 
-1. Requisitos de Yii2
-1.1. PHP 5.4.0 o superior
-1.2. Mod_rewrite activado
-1.3 Librerías
-1.3.1 Ctype
-1.3.2 MBString
-1.3.3 PDO
-1.3.4 PDO-mysql - PDO-pgsql - PDO-sqlite PDO-MSSQL (al menos uno)
-1.3.5 GD
-1.4 Definición de Famework y Framework en desarrollo de software
-1.5 Definición del patrón Model View Controller - MVC (Modelo Vista Controlador)
+    1. Requisitos de Yii2
+        1.1. PHP 5.4.0 o superior
+        1.2. Mod_rewrite activado
+        1.3 Librerías
+            1.3.1 Ctype
+            1.3.2 MBString
+            1.3.3 PDO
+            1.3.4 PDO-mysql - PDO-pgsql - PDO-sqlite PDO-MSSQL (al menos uno)
+            1.3.5 GD
+    2. Definición de Famework y Framework en desarrollo de software
+    3. Definición del patrón Model View Controller - MVC (Modelo Vista Controlador)
+    4. Instalación del template basic
+    5. Estructura de directorios
+    6. Generación del primer "hola mundo"
 
 
 
