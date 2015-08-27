@@ -1,101 +1,85 @@
-Yii 2 Basic Project Template
+Yii 2 Template Basic
 ============================
 
-Yii 2 Basic Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
-rapidly creating small projects.
+CLASE 1
+-------
 
-The template contains the basic features including user login/logout and a contact page.
-It includes all commonly used configurations that would allow you to focus on adding new
-features to your application.
-
-[![Latest Stable Version](https://poser.pugx.org/yiisoft/yii2-app-basic/v/stable.png)](https://packagist.org/packages/yiisoft/yii2-app-basic)
-[![Total Downloads](https://poser.pugx.org/yiisoft/yii2-app-basic/downloads.png)](https://packagist.org/packages/yiisoft/yii2-app-basic)
-[![Build Status](https://travis-ci.org/yiisoft/yii2-app-basic.svg?branch=master)](https://travis-ci.org/yiisoft/yii2-app-basic)
-
-DIRECTORY STRUCTURE
--------------------
-
-      assets/             contains assets definition
-      commands/           contains console commands (controllers)
-      config/             contains application configurations
-      controllers/        contains Web controller classes
-      mail/               contains view files for e-mails
-      models/             contains model classes
-      runtime/            contains files generated during runtime
-      tests/              contains various tests for the basic application
-      vendor/             contains dependent 3rd-party packages
-      views/              contains view files for the Web application
-      web/                contains the entry script and Web resources
+1. Requisitos de Yii2
+1.1. PHP 5.4.0 o superior
+1.2. Mod_rewrite activado
+1.3 Librerías
+1.3.1 Ctype
+1.3.2 MBString
+1.3.3 PDO
+1.3.4 PDO-mysql - PDO-pgsql - PDO-sqlite PDO-MSSQL (al menos uno)
+1.3.5 GD
+1.4 Definición de Famework y Framework en desarrollo de software
+1.5 Definición del patrón Model View Controller - MVC (Modelo Vista Controlador)
 
 
 
-REQUIREMENTS
+ESTRUCTURA DE DIRECTORIO
+------------------------
+
+      assets/             contiene definición de los assets
+      commands/           contiene los comandos de consola (controladores)
+      config/             contiene configuraciones de la aplicación
+      controllers/        contiene las clases que funcionan de Controlador
+      mail/               contiene los archivos que sirven de vistas para enviar correo electrónico
+      models/             contiene las clases de los Modelos
+      runtime/            contiene archivos que se generan durante al ejecución
+      tests/              contiene varias pruebas para el template basic
+      vendor/             contiene paquetes de terceros (extensiones)
+      views/              contiene los archivos de vista para la aplicación web
+      web/                contiene los scripts, css, imágenes y demás recursos
+
+
+
+REQUERIMIENTOS DE INSTALACIÓN
+-----------------------------
+
+EL requerimiento mínimo es contar con PHP 5.4.0 o superior
+
+
+INSTALACIÓN
 ------------
 
-The minimum requirement by this project template that your Web server supports PHP 5.4.0.
+### Instalar vía Composer
 
-
-INSTALLATION
-------------
-
-### Install from an Archive File
-
-Extract the archive file downloaded from [yiiframework.com](http://www.yiiframework.com/download/) to
-a directory named `basic` that is directly under the Web root.
-
-Set cookie validation key in `config/web.php` file to some random secret string:
 
 ```php
-'request' => [
-    // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-    'cookieValidationKey' => '<secret random string goes here>',
-],
+composer global require "fxp/composer-asset-plugin:~1.0.0"
+composer create-project --prefer-dist yiisoft/yii2-app-basic yii2capa8
 ```
 
-You can then access the application through the following URL:
+Puede acceder a la aplicación a través de la siguiente URL:
 
 ~~~
-http://localhost/basic/web/
+http://localhost/yii2capa8/web/
 ~~~
 
+CLASE 2
+-------
 
-### Install via Composer
-
-If you do not have [Composer](http://getcomposer.org/), you may install it by following the instructions
-at [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
-
-You can then install this project template using the following command:
-
-~~~
-php composer.phar global require "fxp/composer-asset-plugin:~1.0.0"
-php composer.phar create-project --prefer-dist --stability=dev yiisoft/yii2-app-basic basic
-~~~
-
-Now you should be able to access the application through the following URL, assuming `basic` is the directory
-directly under the Web root.
-
-~~~
-http://localhost/basic/web/
-~~~
+Veremos cómo poner la aplicación en español, instalaremos el template advanced,
+crearemos nuestras primeras vistas y conoceremos el helper html
 
 
-CONFIGURATION
+CONFIGURACIÓN
 -------------
 
-### Database
+### Base de datos (esto lo veremos pronto)
 
-Edit the file `config/db.php` with real data, for example:
+Edite el archivo `config/db.php` con la configuración del servidor:
 
 ```php
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=yii2basic',
-    'username' => 'root',
-    'password' => '1234',
+    'dsn' => 'mysql:host=localhost;dbname=yii2capa8',
+    'username' => 'yii2capa8',
+    'password' => '123456',
     'charset' => 'utf8',
 ];
 ```
 
-**NOTE:** Yii won't create the database for you, this has to be done manually before you can access it.
-
-Also check and edit the other files in the `config/` directory to customize your application.
+**NOTE:** Recuerden usar #ManosEnElCódigo en las redes sociales
