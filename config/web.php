@@ -4,9 +4,22 @@ $params = require(__DIR__ . '/params.php');
 
 $config = [
     'id' => 'basic',
+    'language'  => 'es',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'components' => [
+        'urlManager' => [
+            'class' => 'yii\web\UrlManager',
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'rules' => [
+                //'articulo/<slug>'   => 'site/articulo',
+                'acerca'            => 'site/about',
+                'contacto'          => 'site/contact',
+                'saludo/<nombre>/<apellido>'   => 'site/saludo',
+//                'mi-texto/<id>/<id2>/<id3>'   => 'site/mi-texto',
+            ],
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '6g2quTfLLjz8on4ZWnn7CFQNxrQD0ksb',

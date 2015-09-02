@@ -51,6 +51,27 @@ class SiteController extends Controller
     {
         return $this->render('index');
     }
+    
+    public function actionSaludo($nombre=null, $apellido=null)
+    {
+        $apellido = $apellido . 'sss';
+        
+        return $this->render(
+            'saludo',
+            [
+                'nombre'    => $nombre,
+                'apellido'  => $apellido,
+            ]
+        );
+    }
+    
+    public function actionMiMetodo()
+    {
+        return $this->render(
+            'mi-metodo'
+        );
+        
+    }
 
     public function actionLogin()
     {

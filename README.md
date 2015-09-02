@@ -65,7 +65,8 @@ CLASE 2
 -------
 
 Veremos cómo poner la aplicación en español, instalaremos el template advanced,
-crearemos nuestras primeras vistas y conoceremos el helper html
+veremos las diferencias entre los dos templates (basic y advanced),
+trabajaremos con el url manager y crearemos nuestras primeras vistas
 
 
 CONFIGURACIÓN

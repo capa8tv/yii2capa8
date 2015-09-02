@@ -4,4 +4,4 @@
 
 $this->title = 'My Yii Application';
 ?>
-Hola Mundo desde Yii2
+<h1>Aprendiendo el trabajo con vistas en Yii2</h1>
