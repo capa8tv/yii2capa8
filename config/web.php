@@ -17,7 +17,7 @@ $config = [
                 'acerca'            => 'site/about',
                 'contacto'          => 'site/contact',
                 'saludo/<nombre>/<apellido>'   => 'site/saludo',
-//                'mi-texto/<id>/<id2>/<id3>'   => 'site/mi-texto',
+                'mi-texto/<id>/<id2>/<id3>'   => 'site/mi-texto',
             ],
         ],
         'request' => [

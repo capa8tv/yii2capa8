@@ -11,6 +11,8 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
+    // public $layout = "moderno/main";
+    
     public function behaviors()
     {
         return [
@@ -49,6 +51,7 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+        // $this->layout = 'moderno/main';
         return $this->render('index');
     }
     
@@ -71,6 +74,18 @@ class SiteController extends Controller
             'mi-metodo'
         );
         
+    }
+    
+    public function actionMiTexto($id=null, $id2=null, $id3=null)
+    {
+        return $this->render(
+            'mi-texto',
+            [
+                'id'    => $id,
+                'id2'   => $id2,
+                'id3'   => $id3,
+            ]
+        );
     }
 
     public function actionLogin()
