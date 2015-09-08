@@ -24,17 +24,18 @@ CLASE 1
 ESTRUCTURA DE DIRECTORIO
 ------------------------
 
-      assets/             contiene definición de los assets
-      commands/           contiene los comandos de consola (controladores)
-      config/             contiene configuraciones de la aplicación
-      controllers/        contiene las clases que funcionan de Controlador
-      mail/               contiene los archivos que sirven de vistas para enviar correo electrónico
-      models/             contiene las clases de los Modelos
-      runtime/            contiene archivos que se generan durante al ejecución
-      tests/              contiene varias pruebas para el template basic
-      vendor/             contiene paquetes de terceros (extensiones)
-      views/              contiene los archivos de vista para la aplicación web
-      web/                contiene los scripts, css, imágenes y demás recursos
+      assets/               contiene definición de los assets
+      commands/             contiene los comandos de consola (controladores)
+      config/               contiene configuraciones de la aplicación
+      controllers/          contiene las clases que funcionan de Controlador
+      mail/                 contiene los archivos que sirven de vistas para enviar correo electrónico
+      models/               contiene las clases de los Modelos
+      runtime/              contiene archivos que se generan durante al ejecución
+      tests/                contiene varias pruebas para el template basic
+      vendor/               contiene paquetes de terceros (extensiones)
+      views/                contiene los archivos de vista para la aplicación web
+        layouts/            contiene los distintos diseños (layouts o templates) de la aplicación
+      web/                  contiene los scripts, css, imágenes y demás recursos
 
 
 
@@ -68,6 +69,12 @@ Veremos cómo poner la aplicación en español, instalaremos el template advance
 veremos las diferencias entre los dos templates (basic y advanced),
 trabajaremos con el url manager y crearemos nuestras primeras vistas
 
+CLASE 2
+-------
+
+trabajaremos con el Helper HTML creando enlaces e imágenes,
+eliminaremos la carpeta web de la URL,
+crearemos un layout personalizado
 
 CONFIGURACIÓN
 -------------
