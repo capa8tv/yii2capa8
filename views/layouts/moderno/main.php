@@ -20,8 +20,8 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     
-    <link href="<?= Yii::$app->homeUrl ?>css/moderno/estilos.css" rel="stylesheet" type="text/css">
-    <link href="<?= Yii::$app->homeUrl ?>img/favicon.png" rel="icon" type="image/vnd.microsoft.icon"/>
+    <link href="<?= Yii::getAlias('@web') ?>/web/css/moderno/estilos.css" rel="stylesheet" type="text/css">
+    <link href="<?= Yii::$app->homeUrl ?>web/img/favicon.png" rel="icon" type="image/vnd.microsoft.icon"/>
     
     <?php $this->head() ?>
 </head>
