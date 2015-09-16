@@ -76,6 +76,13 @@ trabajaremos con el Helper HTML creando enlaces e imágenes,
 eliminaremos la carpeta web de la URL,
 crearemos un layout personalizado
 
+CLASE 4
+-------
+
+En esta clase crearemos la base de datos para el proyecto de blog, 
+aprenderemos a crear los modelos, vistas y controladores a través de la herramienta gii 
+y veremos brevemente la estructura generada.
+
 CONFIGURACIÓN
 -------------
 
