@@ -1,19 +1,9 @@
 <?php
 $config = [
-    'id' => 'blonder413',
-    'language'  => 'es',
-    'timeZone'  => 'America/Bogota',
-    
     'components' => [
-        'urlManager' => [
-            'class' => 'yii\web\UrlManager',
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-                //'articulo/<slug>'   => 'site/articulo',
-                'acerca'            => 'site/about',
-                'contacto'          => 'site/contact',
-            ],
+        'authManager'       => [
+            'class'         => 'yii\rbac\DbManager',
+            'defaultRoles'  => ['guest'],
         ],
     ]
 ]
