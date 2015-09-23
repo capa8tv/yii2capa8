@@ -6,20 +6,20 @@ class Noticia {
             'timestamp' => [
                 'class' => 'yii\behaviors\TimestampBehavior',
                 'attributes' => [
-                    ActiveRecord::EVENT_BEFORE_INSERT => ['fecha_crea', 'fecha_modifica'],
-                    ActiveRecord::EVENT_BEFORE_UPDATE => ['fecha_modifica'],
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
                 ],
                 'value' => new Expression('NOW()'),
             ],
             'blameable' => [
                 'class' => \yii\behaviors\BlameableBehavior::className(),
-                'createdByAttribute' => 'usuario_crea',
-                'updatedByAttribute' => 'usuario_modifica',
+                'createdByAttribute' => 'created_by',
+                'updatedByAttribute' => 'updated_by',
             ],
             [
                 'class' => yii\behaviors\SluggableBehavior\SluggableBehavior::className(),
                 'attribute' => 'titulo',
-                'slugAttribute' => 'slug',
+                'slugAttribute' => 'seo_slug',
             ],
         ];
     }

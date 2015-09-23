@@ -8,6 +8,8 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\SignupForm;
+use app\models\User;
 
 class SiteController extends Controller
 {
@@ -69,8 +71,13 @@ class SiteController extends Controller
     
     public function actionMiMetodo()
     {
+        $model = User::find()->all();
+        
+        
+        
         return $this->render(
-            'mi-metodo'
+            'mi-metodo',
+                ['model'=> $model]
         );
         
     }
@@ -86,7 +93,29 @@ class SiteController extends Controller
             ]
         );
     }
+    
+    public function actionSignup()
+    {
+        $model = new SignupForm();
+        
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->signup()) {
+                if (Yii::$app->getUser()->login($user)) {
+                    return $this->goHome();
+                }
+            }
+        }
 
+        return $this->render('signup', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * usuario: admin
+     * clave: admincapa8
+     * @return type
+     */
     public function actionLogin()
     {
         if (!\Yii::$app->user->isGuest) {

@@ -9,14 +9,14 @@ class MyActiveRecord extends \yii\db\ActiveRecord{
         return [
             'timestamp' => [
                 'class' => \yii\behaviors\TimestampBehavior::className(),
-                'createdAtAttribute' => 'fecha_crea',
-                'updatedAtAttribute' => 'fecha_modifica',
+                'createdAtAttribute' => 'created_at',
+                'updatedAtAttribute' => 'updated_at',
                 'value' => new Expression('NOW()'),
             ],
             'blameable' => [
                 'class' => BlameableBehavior::className(),
-                'createdByAttribute' => 'usuario_crea',
-                'updatedByAttribute' => 'usuario_modifica',
+                'createdByAttribute' => 'created_by',
+                'updatedByAttribute' => 'updated_by',
             ],
         ];
     }
