@@ -40,9 +40,34 @@ class Categoria extends \yii\db\ActiveRecord
             [['created_at', 'updated_at'], 'safe'],
             [['created_by', 'updated_by'], 'integer'],
             [['categoria', 'imagen'], 'string', 'max' => 45],
-            [['seo_slug'], 'string', 'max' => 100]
+            [['seo_slug'], 'string', 'max' => 100],
+//            ['categoria', function ($attribute, $params) {
+//                if ($this->$attribute != "mysql") {
+//                    $this->addError($attribute, 'Esta categoría no está permitida.');
+//                }
+//            }],
+            ['categoria', 'categoriapermitida'],
+            ['seo_slug', 'categoriapermitida'],
         ];
     }
+    
+    /*
+    public function categoriapermitida()
+    {
+        if ($this->categoria != "php") {
+            $this->addError('categoria', 'Esa categoría no está permitida.');
+        }
+    }
+     */
+    
+    
+    public function categoriapermitida($attribute, $params)
+    {
+        if ($this->$attribute != "php") {
+            $this->addError($attribute, 'Esa categoría no está permitida.');
+        }
+    }
+    
 
     /**
      * @inheritdoc
@@ -85,3 +110,4 @@ class Categoria extends \yii\db\ActiveRecord
         return $this->hasMany(Noticia::className(), ['categoria_id' => 'id']);
     }
 }
+

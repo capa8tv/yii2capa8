@@ -13,6 +13,7 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'categoria')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'seo_slug')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'imagen')->textInput(['maxlength' => true]) ?>
 
