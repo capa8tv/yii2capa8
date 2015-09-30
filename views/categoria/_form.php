@@ -8,22 +8,21 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
+<div class="col-lg-12">
+<?php
+    foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
+        echo '<div class="alert alert-' . $key . '">' . $message . '</div>';
+    }
+?>
+</div>
+
 <div class="categoria-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'categoria')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'seo_slug')->textInput(['maxlength' => true]) ?>
-
+    
     <?= $form->field($model, 'imagen')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'created_by')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_by')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

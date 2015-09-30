@@ -2,6 +2,11 @@
 
 namespace app\models;
 
+use yii\db\ActiveRecord;
+use yii\db\Expression;
+use \yii\behaviors\BlameableBehavior;
+use \yii\behaviors\SluggableBehavior;
+
 use Yii;
 
 /**
@@ -20,7 +25,7 @@ use Yii;
  * @property User $updatedBy
  * @property Noticia[] $noticias
  */
-class Categoria extends \yii\db\ActiveRecord
+class Categoria extends ActiveRecord
 {
     /**
      * @inheritdoc
@@ -28,6 +33,29 @@ class Categoria extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'categoria';
+    }
+    
+    public function behaviors() {
+        return [
+            'timestamp' => [
+                'class' => 'yii\behaviors\TimestampBehavior',
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
+                ],
+                'value' => new Expression('NOW()'),
+            ],
+            'blameable' => [
+                'class' => \yii\behaviors\BlameableBehavior::className(),
+                'createdByAttribute' => 'created_by',
+                'updatedByAttribute' => 'updated_by',
+            ],
+            [
+                'class' => SluggableBehavior::className(),
+                'attribute' => 'categoria',
+                'slugAttribute' => 'seo_slug',
+            ],
+        ];
     }
 
     /**
@@ -37,17 +65,21 @@ class Categoria extends \yii\db\ActiveRecord
     {
         return [
             [['categoria', 'created_by', 'updated_by'], 'required'],
+            ['categoria', 'unique'],
             [['created_at', 'updated_at'], 'safe'],
             [['created_by', 'updated_by'], 'integer'],
             [['categoria', 'imagen'], 'string', 'max' => 45],
             [['seo_slug'], 'string', 'max' => 100],
-//            ['categoria', function ($attribute, $params) {
-//                if ($this->$attribute != "mysql") {
-//                    $this->addError($attribute, 'Esta categoría no está permitida.');
+//            [
+//                'categoria', function ($attribute, $params) {
+//                    if ($this->$attribute != "mysql") {
+//                        $this->addError($attribute, 'Esta categoría no está permitida.');
+//                    }
 //                }
-//            }],
-            ['categoria', 'categoriapermitida'],
-            ['seo_slug', 'categoriapermitida'],
+//            ],
+            
+//            ['categoria', 'categoriapermitida'],
+//            [['categoria', 'seo_slug'], 'categoriapermitida'],
         ];
     }
     
@@ -58,16 +90,16 @@ class Categoria extends \yii\db\ActiveRecord
             $this->addError('categoria', 'Esa categoría no está permitida.');
         }
     }
-     */
+    */
     
-    
+    /*
     public function categoriapermitida($attribute, $params)
     {
         if ($this->$attribute != "php") {
             $this->addError($attribute, 'Esa categoría no está permitida.');
         }
     }
-    
+    */
 
     /**
      * @inheritdoc

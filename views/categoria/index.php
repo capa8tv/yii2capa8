@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use kartik\alert\AlertBlock;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\CategoriaSearch */
@@ -10,6 +11,15 @@ use yii\grid\GridView;
 $this->title = 'Categorias';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+<?php
+echo AlertBlock::widget([
+    'type' => AlertBlock::TYPE_ALERT,
+    'useSessionFlash' => true,
+    'delay' => 10000,
+]);
+?>
+
 <div class="categoria-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
