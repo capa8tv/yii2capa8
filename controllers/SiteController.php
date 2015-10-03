@@ -14,7 +14,7 @@ use app\models\User;
 class SiteController extends Controller
 {
 //    public $layout = "moderno/main";
-    
+
     public function behaviors()
     {
         return [
@@ -55,11 +55,11 @@ class SiteController extends Controller
     {
         return $this->render('index');
     }
-    
+
     public function actionSaludo($nombre=null, $apellido=null)
     {
         $apellido = $apellido . 'sss';
-        
+
         return $this->render(
             'saludo',
             [
@@ -68,20 +68,20 @@ class SiteController extends Controller
             ]
         );
     }
-    
+
     public function actionMiMetodo()
     {
         $model = User::find()->all();
-        
-        
-        
+
+
+
         return $this->render(
             'mi-metodo',
                 ['model'=> $model]
         );
-        
+
     }
-    
+
     public function actionMiTexto($id=null, $id2=null, $id3=null)
     {
         return $this->render(
@@ -93,11 +93,11 @@ class SiteController extends Controller
             ]
         );
     }
-    
+
     public function actionSignup()
     {
         $model = new SignupForm();
-        
+
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
                 if (Yii::$app->getUser()->login($user)) {
