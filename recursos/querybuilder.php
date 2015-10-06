@@ -31,3 +31,21 @@ $rows = $connection->createCommand('SELECT * FROM categoria WHERE id = :id AND c
 
 echo "<pre>";
 print_r($rows);
+
+-----------------------------------------------------------------------------------------------------------------------
+
+use yii\data\ArrayDataProvider;
+
+$connection = \Yii::$app->db;
+$query = $connection->createCommand("SELECT * FROM categoria");;
+$searchModel = $query->queryAll();
+
+$dataProvider = new ArrayDataProvider([
+  'allModels' => $searchModel,
+  'sort' => [
+      'attributes' => ['categoria'],
+  ],
+  'pagination' => [
+      'pageSize' => 10,
+  ],
+]);

@@ -63,16 +63,16 @@ class CategoriaController extends Controller
         $model = new Categoria();
 
         if ($model->load(Yii::$app->request->post())) {
-            
+
 //            $model->created_by = Yii::$app->user->id;
 //            $model->updated_by = Yii::$app->user->id;
-            
+
             if (!$model->save()) {
                 echo "<pre>";
                 print_r($model->getErrors());
                 exit;
             }
-            
+
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -92,22 +92,22 @@ class CategoriaController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post())) {
-            
+
             /*
              * success  -> verde todo ok
              * error    -> rojo  todo mal
              * warning  -> amarillo advertencia
              * info     -> azúl información
              */
-            
+
             if ($model->save()) {
                 Yii::$app->session->setFlash("success","todo correcto");
             } else {
                 Yii::$app->session->setFlash("error","no se pudo guardar");
             }
-            
-            
-            
+
+
+
             return $this->redirect(['index']);
         } else {
             return $this->render('update', [
