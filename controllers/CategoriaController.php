@@ -8,6 +8,8 @@ use app\models\CategoriaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\ArrayDataProvider;
+use yii\db\Query;
 
 /**
  * CategoriaController implements the CRUD actions for Categoria model.
@@ -34,6 +36,31 @@ class CategoriaController extends Controller
     {
         $searchModel = new CategoriaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+//        $connection = \Yii::$app->db;
+//        $query = $connection->createCommand("SELECT * FROM categoria");
+//        $searchModel = $query->queryAll();
+        
+//        $dataProvider = new ArrayDataProvider([
+//            'allModels' => $searchModel,
+//            'sort' => [
+//                'attributes' => ['categoria'],
+//            ],
+//            'pagination' => [
+//                'pageSize' => 10,
+//            ],
+//        ]);
+        
+//        $searchModel = new Query;
+//        $dataProvider = new ArrayDataProvider([
+//            'allModels' => $searchModel->from('categoria')->all(),
+//            'sort' => [
+//                'attributes' => ['categoria'],
+//            ],
+//            'pagination' => [
+//                'pageSize' => 10,
+//            ],
+//        ]);
 
         return $this->render('index', [
             'searchModel' => $searchModel,

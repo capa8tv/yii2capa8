@@ -1,20 +1,20 @@
 http://www.bsourcecode.com/yiiframework2/select-query-sql-queries/
 
 $connection = \Yii::$app->db;
-$query = $connection->createCommand("SELECT * FROM categoria");;
+$query = $connection->createCommand("SELECT * FROM categoria");
 $rows = $query->queryAll();
 
 
 $connection = \Yii::$app->db;
-$query = $connection->createCommand("SELECT * FROM categoria");;
+$query = $connection->createCommand("SELECT * FROM categoria");
 $rows = $query->queryOne();
 
 $connection = \Yii::$app->db;
-$query = $connection->createCommand("SELECT categoria FROM categoria");;
+$query = $connection->createCommand("SELECT categoria FROM categoria");
 $rows = $query->queryColumn();
 
 $connection = \Yii::$app->db;
-$query = $connection->createCommand("SELECT COUNT(*) FROM categoria");;
+$query = $connection->createCommand("SELECT COUNT(*) FROM categoria");
 $rows = $query->queryScalar();
 
 $connection = \Yii::$app->db;
@@ -34,6 +34,8 @@ print_r($rows);
 
 -----------------------------------------------------------------------------------------------------------------------
 
+http://www.yiiframework.com/doc-2.0/yii-data-arraydataprovider.html
+
 use yii\data\ArrayDataProvider;
 
 $connection = \Yii::$app->db;
@@ -48,4 +50,22 @@ $dataProvider = new ArrayDataProvider([
   'pagination' => [
       'pageSize' => 10,
   ],
+]);
+
+-----------------------------------------------------------------------------------------------------------------------
+
+http://www.yiiframework.com/doc-2.0/yii-db-query.html
+
+use yii\data\ArrayDataProvider;
+use yii\db\Query;
+
+$searchModel = new Query;
+$dataProvider = new ArrayDataProvider([
+    'allModels' => $searchModel->from('categoria')->all(),
+    'sort' => [
+        'attributes' => ['categoria'],
+    ],
+    'pagination' => [
+        'pageSize' => 10,
+    ],
 ]);
