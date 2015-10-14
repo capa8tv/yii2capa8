@@ -115,4 +115,16 @@ y veremos la forma de crear validaciones personalizadas, también detallamos el 
 y aprendemos a insertar registros. Por último aprenderemos a instalar y usar extensiones y a mostrar mensajes 
 de éxito o error a través del método setFlash.
 
+CLASE 7
+-------
+
+En esta clase aprenderemos a crear consultas usando SQL nativo a través de los llamados
+Query Builder. Aprenderemos a crear un dataProvider y haremos una introducción a los gridview.
+
+CLASE 8
+-------
+
+En esta clase aprenderemos a validar formularios con ajax, personalizar el gridview 
+con los valores de los campos relacionales y a crear un select en un formulario usando una extensión.
+
 **NOTE:** Recuerden usar #ManosEnElCódigo en las redes sociales
