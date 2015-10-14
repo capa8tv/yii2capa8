@@ -14,6 +14,7 @@ return array(
     'yii\\codeception\\' => array($vendorDir . '/yiisoft/yii2-codeception'),
     'yii\\bootstrap\\' => array($vendorDir . '/yiisoft/yii2-bootstrap'),
     'yii\\' => array($vendorDir . '/yiisoft/yii2'),
+    'kartik\\select2\\' => array($vendorDir . '/kartik-v/yii2-widget-select2'),
     'kartik\\base\\' => array($vendorDir . '/kartik-v/yii2-krajee-base'),
     'kartik\\alert\\' => array($vendorDir . '/kartik-v/yii2-widget-alert'),
     'cebe\\markdown\\' => array($vendorDir . '/cebe/markdown'),

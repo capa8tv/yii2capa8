@@ -1,0 +1,1 @@
+alter table noticia modify udated_by update_by datetime;

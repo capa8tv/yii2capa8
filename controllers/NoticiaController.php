@@ -63,8 +63,25 @@ class NoticiaController extends Controller
     {
         $model = new Noticia();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id, 'created_by' => $model->created_by]);
+        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
+//        if ($model->load(Yii::$app->request->post())) {
+            
+//            Yii::$app->response->format = 'json';
+//            return \yii\widgets\ActiveForm::validate($model);
+            
+            if (!$model->validate()) {
+                Yii::$app->response->format = 'json';
+                return \yii\widgets\ActiveForm::validate($model);
+            }
+            
+            if ($model->save()) {
+                Yii::$app->session->setFlash("success", "Todo excelente!");
+            } else {
+                Yii::$app->session->setFlash("error", "Todo mal!");
+            }
+
+            //return $this->redirect(['view', 'id' => $model->id, 'created_by' => $model->created_by]);
+            return $this->redirect('index');
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -83,8 +100,20 @@ class NoticiaController extends Controller
     {
         $model = $this->findModel($id, $created_by);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id, 'created_by' => $model->created_by]);
+        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
+            if (!$model->validate()) {
+                Yii::$app->response->format = 'json';
+                return \yii\widgets\ActiveForm::validate($model);
+            }
+            
+            if ($model->save()) {
+                Yii::$app->session->setFlash("success", "Todo excelente!");
+            } else {
+                Yii::$app->session->setFlash("error", "Todo mal!");
+            }
+            
+            return $this->redirect('index');
+//            return $this->redirect(['view', 'id' => $model->id, 'created_by' => $model->created_by]);
         } else {
             return $this->render('update', [
                 'model' => $model,

@@ -18,7 +18,7 @@ class NoticiaSearch extends Noticia
     public function rules()
     {
         return [
-            [['id', 'categoria_id', 'created_by', 'udated_by'], 'integer'],
+            [['id', 'categoria_id', 'created_by', 'updated_by'], 'integer'],
             [['titulo', 'detalle', 'created_at', 'updated_at'], 'safe'],
         ];
     }
@@ -60,7 +60,7 @@ class NoticiaSearch extends Noticia
             'categoria_id' => $this->categoria_id,
             'created_by' => $this->created_by,
             'created_at' => $this->created_at,
-            'udated_by' => $this->udated_by,
+            'updated_by' => $this->updated_by,
             'updated_at' => $this->updated_at,
         ]);
 

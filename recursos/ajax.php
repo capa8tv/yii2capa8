@@ -1,4 +1,5 @@
-<?php $form = ActiveForm::begin(
+<?php
+$form = ActiveForm::begin(
 [
   'id'  => 'form-comment',
   'enableAjaxValidation' => true,
