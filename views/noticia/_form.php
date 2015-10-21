@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\select2\Select2;
+use dosamigos\ckeditor\CKEditor;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Noticia */
@@ -21,10 +22,11 @@ use kartik\select2\Select2;
 
     <?= $form->field($model, 'titulo')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'detalle')->textArea(['maxlength' => true]) ?>
+    <?= $form->field($model, 'detalle')->widget(CKEditor::className(), [
+        'options' => ['rows' => 6],
+        'preset' => 'advance'
+    ]) ?>
 
-    <?php //echo $form->field($model, 'categoria_id')->textInput() ?>
-    
     <?= $form->field($model, 'categoria_id')->widget(Select2::classname(), [
         'data' => \yii\helpers\ArrayHelper::map(\app\models\Categoria::find()->all(), 'id', 'categoria'),
         'language' => 'es',

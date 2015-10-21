@@ -7,9 +7,12 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
+use app\models\Categoria;
 use app\models\ContactForm;
 use app\models\SignupForm;
 use app\models\User;
+use app\models\Noticia;
+use yii\data\Pagination;
 
 class SiteController extends Controller
 {
@@ -53,7 +56,40 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        $query = Noticia::find();
+
+        $pagination = new Pagination([
+            'defaultPageSize'   => 2,
+            'totalCount'        => $query->count(),
+        ]);
+
+        $noticias = $query->orderBy('id desc')
+                    ->offset($pagination->offset)
+                    ->limit($pagination->limit)
+                    ->all();
+        
+        $categorias = Categoria::find()->all();
+        
+        return $this->render(
+            'index',
+            [
+                'categorias'    => $categorias,
+                'pagination'    => $pagination,
+                'noticias'      => $noticias,
+            ]
+        );
+    }
+    
+    public function actionSidebar()
+    {
+        $categorias = Categoria::find()->all();
+        
+        return $this->render(
+            'sidebar',
+            [
+                'categorias'    => $categorias,
+            ]
+        );
     }
 
     public function actionSaludo($nombre=null, $apellido=null)

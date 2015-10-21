@@ -1,84 +1,27 @@
 <?php
-use yii\bootstrap\Modal;
+use yii\widgets\LinkPager;
 use yii\helpers\Html;
-
-/* @var $this yii\web\View */
-
-$this->title = 'My Yii Application';
 ?>
 
-<br><br><br><br>
+<section class="col-md-9">
+    <br><br><br><br>
+    
+    <?php foreach ($noticias as $key => $value): ?>
+        <h2>
+            <?= Html::a($value->titulo, ['articulo/' . $value->seo_slug]) ?>
+        </h2>
+        <p>Pubicado por: <?= $value->createdBy->name ?></p>
+    <?php endforeach; ?>
+    
+    <div class="row text-center"><?php echo LinkPager::widget(['pagination'=>$pagination]); ?></div>
+</section>
 
-<h1>Aprendiendo el trabajo con vistas en Yii2</h1>
-
-<?= Html::a(
-    'Ir a acerca de',
-    ['/site/about'],
-    [
-        'class' => 'btn btn-primary',
-        'title' => 'más sobre el sitio',
-    ]
-) ?>
-
-<?= Html::img(
-    '@web/web/img/logo.png',
-    [
-        'width' => '200'
-    ]
-) ?>
-
-<?= Html::a(
-    Html::img(
-        '@web/web/img/logo.png',
+<aside class="hidden-xs hidden-sm col-md-3">
+    <br><br><br><br>
+    <?= $this->render(
+        '/site/sidebar',
         [
-            'width' => '200'
+            'categorias' => $categorias,
         ]
-    ),
-    ['/site/about'],
-    [
-        'title' => 'más sobre el sitio',
-    ]
-) ?>
-
-<br><br>
-
-<?php
-Modal::begin([
-    'header' => '<h2>Hello world</h2>',
-    'toggleButton' => ['label' => 'click me'],
-]);
-
-echo 'Say hello...';
-
-Modal::end();
-?>
-
-<br><br>
-
-<?php
-Modal::begin([
-    'header' => Html::img(
-        '@web/web/img/logo.png', 
-        [
-            'alt' => 'Capa8 tv',
-            'title' => 'Capa8 tv',
-        ]
-    ),
-    'toggleButton' => ['label' =>
-        Html::img(
-            '@web/web/img/logo.png',
-            [
-                'alt' => 'Capa8 tv',
-                'title' => 'Capa8 tv',
-                'width' => '300',
-            ]
-        ),
-    ],
-]);
-
-echo '<p>Jonathan Morales Salazar</p>';
-echo '<p>Ingeniero de Sistemas</p>';
-echo '<p>Curso de YiiFramework 2</p>';
-
-Modal::end();
-?>
+    ) ?>
+</aside>
