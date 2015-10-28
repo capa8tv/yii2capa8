@@ -18,8 +18,8 @@ class ComentarioSearch extends Comentario
     public function rules()
     {
         return [
-            [['id', 'noticia_id', 'created_by', 'updated_by'], 'integer'],
-            [['nombre', 'correo', 'comentario', 'estado', 'created_at', 'updated_at'], 'safe'],
+            [['id', 'noticia_id'], 'integer'],
+            [['nombre', 'correo', 'comentario', 'estado'], 'safe'],
         ];
     }
 
@@ -58,10 +58,6 @@ class ComentarioSearch extends Comentario
         $query->andFilterWhere([
             'id' => $this->id,
             'noticia_id' => $this->noticia_id,
-            'created_by' => $this->created_by,
-            'created_at' => $this->created_at,
-            'updated_by' => $this->updated_by,
-            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'nombre', $this->nombre])

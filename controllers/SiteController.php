@@ -12,7 +12,9 @@ use app\models\ContactForm;
 use app\models\SignupForm;
 use app\models\User;
 use app\models\Noticia;
+use \app\models\Comentario;
 use yii\data\Pagination;
+use yii\db\Expression;
 
 class SiteController extends Controller
 {
@@ -191,5 +193,38 @@ class SiteController extends Controller
     {
         $this->layout = 'moderno/main';
         return $this->render('about');
+    }
+    
+    public function actionNoticia($slug)
+    {
+        $categorias = Categoria::find()->all();
+        
+        $noticia = Noticia::find("seo_slug = :slug", [":slug" => $slug])->one();
+        
+        $comentario = new Comentario;
+        
+        if ($comentario->load(Yii::$app->request->post())) {
+            
+            $comentario->estado         = '0';
+            $comentario->noticia_id     = $noticia->id;
+            $comentario->fecha          = new Expression("NOW()");
+            
+            if ($comentario->save()) {
+                Yii::$app->session->setFlash('success', 'Gracias por su comentario');
+            } else {
+                Yii::$app->session->setFlash('error', 'Su comentario no pudo ser registrado');
+            }
+            
+            return $this->redirect(["/noticia/$slug"]);
+        }
+        
+        return $this->render(
+            'noticia',
+            [
+                'comentario'     => $comentario,
+                'categorias'    => $categorias,
+                'noticia'       => $noticia,
+            ]
+        );
     }
 }

@@ -11,6 +11,11 @@ use yii\helpers\Html;
             <?= Html::a($value->titulo, ['noticia/' . $value->seo_slug]) ?>
         </h2>
         <p>Pubicado por: <?= $value->createdBy->name ?></p>
+        
+        <p>
+            <?= $value->totalComentarios ?>
+        </p>
+        
     <?php endforeach; ?>
     
     <div class="row text-center"><?php echo LinkPager::widget(['pagination'=>$pagination]); ?></div>

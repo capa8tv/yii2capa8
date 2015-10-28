@@ -45,7 +45,8 @@ class Noticia extends ActiveRecord
             [['categoria_id', 'created_by', 'updated_by'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['titulo', 'seo_slug'], 'string', 'max' => 100],
-            [['detalle'], 'string', 'max' => 45]
+            [['detalle'], 'string', 'max' => 45],
+            [['titulo', 'seo_slug'], 'unique'],
         ];
     }
 
@@ -112,5 +113,16 @@ class Noticia extends ActiveRecord
     public function getUdatedBy()
     {
         return $this->hasOne(User::className(), ['id' => 'udated_by']);
+    }
+    
+//    public function getTituloMejorado() {
+//        return "el título es $this->titulo";
+//    }
+    
+    public function getTotalComentarios()
+    {
+        return $this->hasMany(Comentario::className(), ['noticia_id' => 'id'])
+                    ->where('estado = 1')
+                    ->count('id');
     }
 }
