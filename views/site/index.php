@@ -8,7 +8,7 @@ use yii\helpers\Html;
     
     <?php foreach ($noticias as $key => $value): ?>
         <h2>
-            <?= Html::a($value->titulo, ['articulo/' . $value->seo_slug]) ?>
+            <?= Html::a($value->titulo, ['noticia/' . $value->seo_slug]) ?>
         </h2>
         <p>Pubicado por: <?= $value->createdBy->name ?></p>
     <?php endforeach; ?>

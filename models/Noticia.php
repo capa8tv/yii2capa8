@@ -48,7 +48,7 @@ class Noticia extends ActiveRecord
             [['detalle'], 'string', 'max' => 45]
         ];
     }
-    
+
     public function behaviors() {
         return [
             'timestamp' => [
