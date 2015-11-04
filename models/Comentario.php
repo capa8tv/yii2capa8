@@ -39,7 +39,7 @@ class Comentario extends \yii\db\ActiveRecord
             [['noticia_id'], 'integer'],
             [['fecha'], 'safe'],
             [['nombre', 'correo', 'comentario', 'estado'], 'string', 'max' => 45],
-            ['correo', 'email'],
+//            ['correo', 'email'],
             // verifyCode needs to be entered correctly
             ['verifyCode', 'captcha'],
         ];

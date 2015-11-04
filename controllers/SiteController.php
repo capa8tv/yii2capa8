@@ -15,6 +15,7 @@ use app\models\Noticia;
 use \app\models\Comentario;
 use yii\data\Pagination;
 use yii\db\Expression;
+use app\models\Security;
 
 class SiteController extends Controller
 {
@@ -208,6 +209,7 @@ class SiteController extends Controller
             $comentario->estado         = '0';
             $comentario->noticia_id     = $noticia->id;
             $comentario->fecha          = new Expression("NOW()");
+            $comentario->correo         = Security::mcrypt($comentario->correo);
             
             if ($comentario->save()) {
                 Yii::$app->session->setFlash('success', 'Gracias por su comentario');

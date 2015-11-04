@@ -128,3 +128,9 @@ En esta clase aprenderemos a validar formularios con ajax, personalizar el gridv
 con los valores de los campos relacionales y a crear un select en un formulario usando una extensión.
 
 **NOTE:** Recuerden usar #ManosEnElCódigo en las redes sociales
+
+
+CLASE 11
+--------
+
+En esta clase aprendemos a usar modelos que no se conectan a una base de datos y a personalizar la búsqueda del gridview

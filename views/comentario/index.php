@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\Security;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ComentarioSearch */
@@ -27,7 +28,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'nombre',
-            'correo',
+//            'correo',
+            [
+                'attribute' => 'correo',
+                'value'     => function ($searchModel) {
+                    return Security::decrypt($searchModel->correo);
+                }
+            ],
             'comentario',
             'estado',
             // 'noticia_id',

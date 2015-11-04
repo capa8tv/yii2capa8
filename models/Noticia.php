@@ -84,9 +84,9 @@ class Noticia extends ActiveRecord
             'seo_slug' => 'Seo Slug',
             'detalle' => 'Detalle',
             'categoria_id' => 'Categoria',
-            'created_by' => 'Created By',
+            'created_by' => 'Creado por',
             'created_at' => 'Created At',
-            'updated_by' => 'Udated By',
+            'updated_by' => 'Actualizado por',
             'updated_at' => 'Updated At',
         ];
     }

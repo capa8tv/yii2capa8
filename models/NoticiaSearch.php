@@ -18,8 +18,8 @@ class NoticiaSearch extends Noticia
     public function rules()
     {
         return [
-            [['id', 'categoria_id', 'created_by', 'updated_by'], 'integer'],
-            [['titulo', 'detalle', 'created_at', 'updated_at'], 'safe'],
+            [['id', 'categoria_id'], 'integer'],
+            [['titulo', 'detalle', 'created_by', 'updated_by', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -54,18 +54,22 @@ class NoticiaSearch extends Noticia
             // $query->where('0=1');
             return $dataProvider;
         }
+        
+        $query->joinWith("createdBy");
 
         $query->andFilterWhere([
             'id' => $this->id,
             'categoria_id' => $this->categoria_id,
-            'created_by' => $this->created_by,
+//            'created_by' => $this->created_by,
             'created_at' => $this->created_at,
             'updated_by' => $this->updated_by,
             'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'titulo', $this->titulo])
-            ->andFilterWhere(['like', 'detalle', $this->detalle]);
+            ->andFilterWhere(['like', 'detalle', $this->detalle])
+            ->andFilterWhere(['like', 'user.name', $this->created_by])
+            ;
 
         return $dataProvider;
     }

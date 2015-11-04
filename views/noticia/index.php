@@ -58,7 +58,11 @@ echo AlertBlock::widget([
                                 ],
                             ]),
             ],
-            'created_by',
+            [
+                'attribute' => 'created_by',
+                'value'     => 'createdBy.name',
+            ],
+            // 'created_by',
             // 'created_at',
             // 'updated_by',
             // 'updated_at',
