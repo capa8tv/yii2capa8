@@ -21,6 +21,7 @@ class Comentario extends \yii\db\ActiveRecord
 {
     public $verifyCode;
     
+    
     /**
      * @inheritdoc
      */
@@ -41,7 +42,7 @@ class Comentario extends \yii\db\ActiveRecord
             [['nombre', 'correo', 'comentario', 'estado'], 'string', 'max' => 45],
 //            ['correo', 'email'],
             // verifyCode needs to be entered correctly
-            ['verifyCode', 'captcha'],
+            ['verifyCode', 'captcha', "on" => "comentario"],
         ];
     }
 

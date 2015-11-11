@@ -44,13 +44,12 @@ class ComentarioController extends Controller
     /**
      * Displays a single Comentario model.
      * @param integer $id
-     * @param integer $updated_by
      * @return mixed
      */
-    public function actionView($id, $updated_by)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id, $updated_by),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -64,7 +63,7 @@ class ComentarioController extends Controller
         $model = new Comentario();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id, 'updated_by' => $model->updated_by]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -76,15 +75,14 @@ class ComentarioController extends Controller
      * Updates an existing Comentario model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
-     * @param integer $updated_by
      * @return mixed
      */
-    public function actionUpdate($id, $updated_by)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($id, $updated_by);
+        $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id, 'updated_by' => $model->updated_by]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -96,27 +94,46 @@ class ComentarioController extends Controller
      * Deletes an existing Comentario model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
-     * @param integer $updated_by
      * @return mixed
      */
-    public function actionDelete($id, $updated_by)
+    public function actionDelete($id)
     {
-        $this->findModel($id, $updated_by)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+    
+    /**
+     * Aprobar un comentario
+     */
+    public function actionAprobar($id)
+    {
+        $comentario = $this->findModel($id);
+        
+        $comentario->estado = "1";
+        
+        if ($comentario->save()) {
+            Yii::$app->session->setFlash("success", "Registro borrado exitosamente");
+        } else {
+            echo "<pre>";
+            print_r($comentario->getErrors());
+            exit;
+            Yii::$app->session->setFlash("error", "El registro no pudo ser borrado");
+        }
+        
+        $this->redirect(["/comentario/index"]);
     }
 
     /**
      * Finds the Comentario model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @param integer $updated_by
      * @return Comentario the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id, $updated_by)
+    protected function findModel($id)
     {
-        if (($model = Comentario::findOne(['id' => $id, 'updated_by' => $updated_by])) !== null) {
+        if (($model = Comentario::findOne(['id' => $id])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

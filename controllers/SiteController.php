@@ -202,7 +202,7 @@ class SiteController extends Controller
         
         $noticia = Noticia::find("seo_slug = :slug", [":slug" => $slug])->one();
         
-        $comentario = new Comentario;
+        $comentario = new Comentario(["scenario" => "comentario"]);
         
         if ($comentario->load(Yii::$app->request->post())) {
             
