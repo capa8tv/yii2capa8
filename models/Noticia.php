@@ -119,6 +119,12 @@ class Noticia extends ActiveRecord
 //        return "el título es $this->titulo";
 //    }
     
+    public function getComentarios() {
+        return $this->hasMany(Comentario::className(), ["noticia_id" => "id"])
+                    ->where("estado = 1")
+                    ->orderBy("id desc");
+    }
+    
     public function getTotalComentarios()
     {
         return $this->hasMany(Comentario::className(), ['noticia_id' => 'id'])

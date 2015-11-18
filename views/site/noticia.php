@@ -26,6 +26,19 @@ echo AlertBlock::widget([
         ]
     ) ?>
     
+    
+    <h2>Comentarios</h2>
+    
+    <ul>
+    <?php foreach ($noticia->comentarios as $key => $value): ?>
+        <li>
+            <?= $value->nombre; ?> - <?= $value->fecha; ?><br>
+            <?= $value->comentario; ?>
+            <hr>
+        </li>
+    <?php endforeach; ?>
+    </ul>
+    
 </section>
 
 <aside class="hidden-xs hidden-sm col-md-3">
