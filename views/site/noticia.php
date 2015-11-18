@@ -13,6 +13,8 @@ echo AlertBlock::widget([
 ]);
 ?>
     
+    <?= \yii\helpers\Html::img("@web/web/img/mi-nueva-categoria.png", ["alt" => "imagen"]); ?>
+    
     <h1><?= $noticia->titulo ?></h1>
     Categoría: <?= $noticia->categoria->categoria ?><br>
     Publicado por <?= $noticia->createdBy->name ?><br>

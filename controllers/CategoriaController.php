@@ -10,6 +10,8 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\data\ArrayDataProvider;
 use yii\db\Query;
+use yii\web\UploadedFile;
+use app\models\Helper;
 
 /**
  * CategoriaController implements the CRUD actions for Categoria model.
@@ -93,14 +95,24 @@ class CategoriaController extends Controller
 
 //            $model->created_by = Yii::$app->user->id;
 //            $model->updated_by = Yii::$app->user->id;
+            
+            $model->file = UploadedFile::getInstance($model, 'file');
+            
+            $model->imagen = Helper::limpiaUrl($model->categoria . '.' . $model->file->extension);
+            
+            $model->file->saveAs( 'web/img/' . $model->imagen);
 
-            if (!$model->save()) {
-                echo "<pre>";
-                print_r($model->getErrors());
-                exit;
+            if ($model->save()) {
+                Yii::$app->session->setFlash("success", "Categoría creada exitosamente");
+            } else {
+//                echo "<pre>";
+//                print_r($model->getErrors());
+//                exit;
+                Yii::$app->session->setFlash("error", "La categoría no pudo ser creada");
             }
 
-            return $this->redirect(['view', 'id' => $model->id]);
+            //return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(["index"]);
         } else {
             return $this->render('create', [
                 'model' => $model,

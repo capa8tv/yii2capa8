@@ -27,6 +27,7 @@ use Yii;
  */
 class Categoria extends ActiveRecord
 {
+    public $file;
     /**
      * @inheritdoc
      */
@@ -64,12 +65,13 @@ class Categoria extends ActiveRecord
     public function rules()
     {
         return [
-            [['categoria', 'created_by', 'updated_by'], 'required'],
+            [['categoria'], 'required'],
             ['categoria', 'unique'],
             [['created_at', 'updated_at'], 'safe'],
             [['created_by', 'updated_by'], 'integer'],
             [['categoria', 'imagen'], 'string', 'max' => 45],
             [['seo_slug'], 'string', 'max' => 100],
+            [['file'], 'file'],
 //            [
 //                'categoria', function ($attribute, $params) {
 //                    if ($this->$attribute != "mysql") {
@@ -110,6 +112,7 @@ class Categoria extends ActiveRecord
             'id' => 'ID',
             'categoria' => 'Categoria',
             'seo_slug' => 'Seo Slug',
+            'file'          => 'Imagen',
             'imagen' => 'Imagen',
             'created_at' => 'Created At',
             'created_by' => 'Created By',
